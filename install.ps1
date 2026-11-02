@@ -11,10 +11,12 @@ foreach ($name in @("boot-server.mjs", "boot-server.vbs")) {
   if (Test-Path $source) { Copy-Item $source (Join-Path $dest $name) -Force }
 }
 
-$packagedVideo = Join-Path $PSScriptRoot "boot.mp4"
-if (Test-Path $packagedVideo) {
-  Copy-Item $packagedVideo (Join-Path $dest "boot.mp4") -Force
-  Write-Host "copied bundled boot.mp4"
+foreach ($video in @("boot-new.mp4", "boot.mp4")) {
+  $packagedVideo = Join-Path $PSScriptRoot $video
+  if (Test-Path $packagedVideo) {
+    Copy-Item $packagedVideo (Join-Path $dest $video) -Force
+    Write-Host ("copied bundled " + $video)
+  }
 }
 
 $profileDir = Join-Path $env:USERPROFILE ".dsh\profiles\desktop"

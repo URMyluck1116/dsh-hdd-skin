@@ -33,9 +33,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
 
 > 安装/更新其它插件后，`cordis.patch.yml` 可能被重写，`wallpaper` 这段会消失，皮肤随之失效。运行 `tools/fix-profile.ps1` 可以补回。
 
-## 启动动画（可选）
+## 启动动画
 
-`boot.mp4` 体积较大，不在仓库里。需要的话把视频放到 `C:\Users\Public\dsh-wallpaper\boot.mp4`，再运行一次 `install.ps1` 或双击 `boot-server.vbs`（服务监听 `127.0.0.1:18766`）。没有视频不影响其它样式。
+仓库根目录已包含 `boot-new.mp4`（约 27 MB，12.75 秒的开机动画）。`install.ps1` 会把它复制到 `C:\Users\Public\dsh-wallpaper\boot-new.mp4`，`boot-server.mjs` 监听 `127.0.0.1:18766` 提供该视频，DSH 打开时在相框内播放。
+
+- 如果不想用自带动画，删除 `boot-new.mp4` 即可；没有视频不影响其它样式。
+- 旧的 `boot.mp4`（约 71 MB）没有放进仓库，需要的话自行放到 `C:\Users\Public\dsh-wallpaper\boot.mp4`。
 
 ## 目录
 

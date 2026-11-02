@@ -1,0 +1,421 @@
+/* ============================================================
+   DSH 左侧背景壁纸 + 深色玻璃侧栏
+   目标：左侧栏（.BynINW_sidebarCol）显示用户图片，内部文字/图标
+   改为浅色，保证在深色图片上的可读性。右侧聊天区保持原样。
+   ============================================================ */
+
+.BynINW_sidebarCol {
+  --dsh-wallpaper-glow: radial-gradient(
+    95% 62% at 50% 12%,
+    rgba(96, 142, 255, 0.66) 0%,
+    rgba(58, 104, 245, 0.30) 36%,
+    rgba(20, 40, 96, 0.12) 62%,
+    rgba(8, 16, 38, 0) 78%
+  );
+  --dsh-wallpaper-veil: linear-gradient(
+    180deg,
+    rgba(8, 18, 44, 0.10) 0%,
+    rgba(7, 15, 38, 0.50) 46%,
+    rgba(6, 12, 30, 0.86) 100%
+  );
+
+  /* 侧栏自身填充改为透明，让壁纸透出来 */
+  --dsw-specific-sidebar-fill: transparent;
+
+  /* 深色背景下的标签色（侧栏内部组件大量使用这些 token） */
+  --dsw-alias-label-primary: #e9f1ff;
+  --dsw-alias-label-primary-bluish: #eef4ff;
+  --dsw-alias-label-secondary: #b6c6e2;
+  --dsw-alias-label-tertiary: #8fa3c4;
+  --dsw-alias-label-caption: #7b8fb0;
+  --dsw-alias-label-primary-inverted: #07101f;
+
+  /* 交互与描边 */
+  --dsw-alias-interactive-bg-hover: rgba(120, 170, 255, 0.14);
+  --dsw-alias-interactive-bg-active: rgba(120, 170, 255, 0.22);
+  --dsw-alias-border-l3: rgba(150, 190, 255, 0.26);
+  --dsw-alias-border-l4: rgba(150, 190, 255, 0.32);
+  --dsw-alias-button-elevated-fill: rgba(255, 255, 255, 0.09);
+  --dsw-alias-button-floating-hover: rgba(120, 170, 255, 0.20);
+
+  /* 滚动条 */
+  --dsw-alias-scrollbar-bg-l2: rgba(190, 215, 255, 0.25);
+  --dsw-alias-scrollbar-hover-l2: rgba(190, 215, 255, 0.45);
+
+  background-color: #071029 !important;
+  background-image: var(--dsh-wallpaper-glow), var(--dsh-wallpaper-veil) !important;
+  background-size: cover !important;
+  background-position: center 42% !important;
+  background-repeat: no-repeat !important;
+  border-right: 1px solid rgba(110, 160, 255, 0.22) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(140, 190, 255, 0.18),
+    inset -18px 0 32px -30px rgba(0, 0, 0, 0.9) !important;
+}
+
+/* 侧栏根节点原本铺底色，改为透明 */
+.BynINW_sidebarCol ._2H3hWW_root {
+  background: transparent !important;
+}
+
+/* 品牌字标在深色图片上加一点冷光 */
+.BynINW_sidebarCol ._2H3hWW_brandName {
+  color: #f2f7ff;
+  text-shadow: 0 0 18px rgba(110, 165, 255, 0.35);
+}
+
+/* 品牌区：用两行 HDD SYSTEM 标题替换原来的图标 + deepseek HARNESS 文字 */
+.BynINW_sidebarCol ._2H3hWW_root:not(._2H3hWW_collapsed) ._2H3hWW_logoRow {
+  position: relative !important;
+  height: 54px !important;
+  margin: 0 0 156px !important;
+  padding: 0 !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+  overflow: visible !important;
+  background-image: linear-gradient(
+    180deg,
+    transparent 30px,
+    rgba(206, 234, 255, 0.85) 30px,
+    rgba(206, 234, 255, 0.85) 31px,
+    transparent 31px
+  ) !important;
+  background-repeat: no-repeat !important;
+  background-size: 100% 100% !important;
+}
+
+.BynINW_sidebarCol ._2H3hWW_root:not(._2H3hWW_collapsed) ._2H3hWW_logoRow::before {
+  content: "H.D.D. SYSTEM";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  text-align: center;
+  white-space: nowrap;
+  font-family: "Arial Black", "Segoe UI Black", "Segoe UI", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.1;
+  letter-spacing: 0.3px;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(238, 250, 255, 0.95);
+  background-image:
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0 1px, rgba(255, 255, 255, 0) 1px 3px),
+    linear-gradient(180deg, #f2fbff 0%, #c6e6ff 38%, #6fb4ff 52%, #e6f6ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.BynINW_sidebarCol ._2H3hWW_root:not(._2H3hWW_collapsed) ._2H3hWW_logoRow::after {
+  content: "HOLLOW DEEP DIVE SYSTEM";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 36px;
+  text-align: center;
+  white-space: nowrap;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-style: italic;
+  font-weight: 800;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 2.2px;
+  color: #e6f6ff;
+  text-shadow: 0 0 10px rgba(120, 190, 255, 0.8);
+}
+
+.BynINW_sidebarCol ._2H3hWW_brandIdentity {
+  display: none !important;
+}
+
+/* 新会话按钮：玻璃质感 */
+.BynINW_sidebarCol ._2H3hWW_newSession {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(150, 195, 255, 0.30) !important;
+  color: #eaf2ff !important;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 8px 20px rgba(0, 0, 0, 0.28) !important;
+}
+
+.BynINW_sidebarCol ._2H3hWW_newSession:hover {
+  background: rgba(110, 165, 255, 0.20) !important;
+  border-color: rgba(160, 200, 255, 0.48) !important;
+}
+
+/* 插件 / 自动化任务 等面板行 */
+.BynINW_sidebarCol ._2H3hWW_panelRow {
+  color: #dfe9fb !important;
+}
+
+.BynINW_sidebarCol ._2H3hWW_panelRow._2H3hWW_panelActive {
+  background: rgba(110, 165, 255, 0.18) !important;
+  box-shadow: inset 0 0 0 0.5px rgba(160, 200, 255, 0.35) !important;
+}
+
+/* 会话选中态：左侧高亮条 */
+.BynINW_sidebarCol .hIlkoa_sessionRow.hIlkoa_selected {
+  background: rgba(96, 150, 255, 0.24) !important;
+  box-shadow:
+    inset 2px 0 0 #7fb2ff,
+    inset 0 0 0 0.5px rgba(150, 195, 255, 0.30) !important;
+}
+
+.BynINW_sidebarCol .hIlkoa_sessionRow.hIlkoa_selected .hIlkoa_title {
+  color: #f4f8ff !important;
+}
+
+/* 列表底部渐隐改为与壁纸暗部一致 */
+.BynINW_sidebarCol ._9lTDKa_fade {
+  background: linear-gradient(to bottom, rgba(5, 11, 22, 0), rgba(5, 11, 22, 0.92)) !important;
+}
+
+/* 图片亮部上的文字加一点投影，提升可读性 */
+.BynINW_sidebarCol .hIlkoa_title,
+.BynINW_sidebarCol .hIlkoa_projectText,
+.BynINW_sidebarCol ._9lTDKa_sectionLabel,
+.BynINW_sidebarCol ._2H3hWW_panelTitle {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+
+/* Windows 标题栏上的侧栏开关按钮位于浅色标题条上，保持深色以可见 */
+[data-windows-titlebar] .BynINW_sidebarCol ._2H3hWW_toggle {
+  color: #3b3f45 !important;
+}
+
+[data-windows-titlebar] .BynINW_sidebarCol ._2H3hWW_toggle:hover {
+  background: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-windows-titlebar] .BynINW_sidebarCol ._2H3hWW_root._2H3hWW_collapsed ._2H3hWW_newSession {
+  color: #3b3f45 !important;
+}
+
+/* 折叠成窄栏时收成纯色，避免壁纸被压扁 */
+.BynINW_sidebarCol:has(._2H3hWW_collapsed) {
+  background-image: linear-gradient(180deg, #0a1740 0%, #060d20 100%) !important;
+  box-shadow: none !important;
+  border-right-color: rgba(110, 160, 255, 0.18) !important;
+}
+
+/* ============================================================
+   整体页面背景：参照背景图的蓝黑色
+   用 body[data-ds-dark-theme] 启用官方深色配色，
+   再把主要表面统一换成蓝黑（#050b16 体系）。
+   ============================================================ */
+
+html,
+body,
+#root {
+  background-color: #050b16 !important;
+}
+
+body[data-ds-dark-theme] {
+  --dsw-alias-bg-base: #050b16;
+  --dsw-alias-bg-document-preview: #050b16;
+  --dsw-alias-bg-layer-1: #081324;
+  --dsw-alias-bg-layer-2: #0a1830;
+  --dsw-alias-bg-layer-3: #0d1e3a;
+  --dsw-alias-bg-module-platform: #0a1728;
+  --dsw-alias-bg-overlay: #0a1524;
+  --dsw-alias-bg-skeleton: rgba(255, 255, 255, 0.06);
+  --dsw-alias-markdown-code-block: #071120;
+  --dsw-alias-markdown-code-block-banner: #0b1a2e;
+  --dsw-alias-markdown-code-segment-unselected: #071120;
+  --dsw-alias-markdown-code-segment-selected: #12233f;
+  --dsw-alias-tooltip-bg: #0e1c33;
+  --dsw-alias-toast-bg: #0e1c33;
+  --dsw-alias-interactive-bg-hover-solid: #12233f;
+  --dsw-alias-button-elevated-fill: #0f1e36;
+  --dsw-alias-button-floating-fill: #0b1830;
+  --dsw-alias-button-floating-hover: #12233f;
+  --dsw-alias-button-ghost-active-fill: #0f1e36;
+  --dsw-alias-button-ghost-active-hover: #142846;
+  --dsw-alias-menu-icon: #c3d2ea;
+
+  /* 文本略微偏冷，和蓝黑背景更协调 */
+  --dsw-alias-label-secondary: #a8b8d2;
+  --dsw-alias-label-tertiary: #8496b5;
+  --dsw-alias-label-caption: #7083a3;
+
+  --dsw-specific-sidebar-fill: #050b16;
+  --dsw-specific-input-major: #0a1729;
+  --dsw-specific-bubble: #0a1829;
+  --dsw-specific-bubble-highlight: #132744;
+  --dsw-specific-sidebar-nav-item-hover: #0d1c33;
+  --dsw-specific-sidebar-nav-item-active: #122340;
+  --dsw-specific-tip: #10203a;
+}
+
+/* 顶部标题条与右侧内容区统一为蓝黑；右侧内容区用 #060F1F */
+[data-windows-titlebar] .BynINW_frame {
+  background: #050b16 !important;
+}
+
+[data-windows-titlebar] .BynINW_frame:before {
+  background: #050b16 !important;
+  border-bottom: 1px solid rgba(110, 160, 255, 0.10);
+}
+
+[data-windows-titlebar] .BynINW_centerCol {
+  border-top: 1px solid rgba(110, 160, 255, 0.10);
+}
+
+/* 右侧（聊天区）背景：#060F1F + 屏幕暗角，并让内部 bg-base 容器跟随 */
+.BynINW_centerCol {
+  --dsw-alias-bg-base: #060f1f;
+  position: relative !important;
+  padding: 34px !important;
+  isolation: isolate;
+  background-color: #060f1f !important;
+  background-image:
+    radial-gradient(120% 80% at 50% 26%, rgba(46, 78, 88, 0.28) 0%, rgba(6, 15, 31, 0) 62%),
+    radial-gradient(125% 120% at 50% 52%, rgba(4, 9, 18, 0) 42%, rgba(2, 6, 12, 0.5) 100%) !important;
+}
+
+/* 右侧背景层：底部 1/4 三角线框球 + 球体上方空白区中央的 H.D.D. 水印
+   （两者都画在同一个固定定位的 ::before 里，避免往 React 管理的 DOM 里插节点） */
+.BynINW_centerCol::before {
+  content: "";
+  position: fixed;
+  left: var(--dsh-sphere-left, 0px);
+  top: var(--dsh-sphere-top, 0px);
+  width: var(--dsh-sphere-width, 0px);
+  height: var(--dsh-sphere-height, 0px);
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url("data:image/png;base64,__HDD__") no-repeat center var(--dsh-mark-top, 0px) / var(--dsh-mark-width, 0px) auto,
+    url("data:image/svg+xml;base64,__SPHERE__") no-repeat center var(--dsh-ball-top, 0px) / var(--dsh-sphere-size, 0px) var(--dsh-sphere-size, 0px);
+  opacity: 0.4;
+}
+
+/* 让球体从聊天内容后面透出来：逐层把布局容器背景清空，文字/卡片仍在球体之上 */
+.BynINW_centerCol > * {
+  background: transparent !important;
+}
+
+/* 会话根节点/滚动区自身带 bg-base，会让球被盖住：按语义属性与祖先关系清空 */
+.BynINW_centerCol .Dc7zOa_root,
+.BynINW_centerCol [data-conversation-content],
+.BynINW_centerCol [data-conversation-scroll],
+.BynINW_centerCol *:has([data-conversation-content]) {
+  background: transparent !important;
+}
+
+/* 输入框上方那层“透明→底色”的渐隐遮罩会压住球体底部，去掉它 */
+.BynINW_centerCol [data-conversation-scroll] > * {
+  background: none !important;
+}
+
+/* 滚动至底部按钮：沿用输入框的背景/边框，箭头用主题色 */
+button[class*="toBottom"],
+.V4vHZW_toBottom {
+  background: #0a1729 !important;
+  border: 1px solid #1d2f58 !important;
+  color: var(--dsw-alias-state-business-primary, #4d8dff) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35) !important;
+  backdrop-filter: blur(6px);
+}
+
+button[class*="toBottom"]:hover,
+.V4vHZW_toBottom:hover {
+  background: #0d1f38 !important;
+  border-color: #2b4a86 !important;
+}
+
+button[class*="toBottom"] svg,
+.V4vHZW_toBottom svg {
+  color: inherit !important;
+}
+
+.BynINW_rightbarCol {
+  --dsw-alias-bg-base: #060f1f;
+  background: #060f1f !important;
+}
+
+/* ============================================================
+   右侧外框：使用提供的相框图片
+   只包住右侧聊天区，不包含左侧侧边栏
+   ============================================================ */
+
+/* 相框绘制在聊天区四周的 padding 区域上，不遮挡内容、不拦截交互 */
+.BynINW_centerCol::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  border: 34px solid transparent;
+  border-image: url("data:image/png;base64,__FRAME__") 40 46 32 44 / 34px / 0 stretch;
+}
+
+/* ============================================================
+   Fairy 眼睛挂件：左侧栏底部，随会话状态呼吸/凝视/安抚
+   ============================================================ */
+
+#dsh-fairy-pet {
+  position: fixed;
+  width: 140px;
+  height: 140px;
+  z-index: 55;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  filter: drop-shadow(0 8px 24px rgba(58, 107, 255, 0.42));
+}
+
+#dsh-fairy-pet[data-visible] {
+  opacity: 1;
+}
+
+#dsh-fairy-pet::before {
+  content: "";
+  position: absolute;
+  inset: -32%;
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(86, 140, 255, 0.22) 0%,
+    rgba(86, 140, 255, 0.05) 46%,
+    rgba(86, 140, 255, 0) 68%
+  );
+}
+
+#dsh-fairy-pet[data-state="normal"] {
+  animation: dsh-pet-float 7s ease-in-out infinite;
+}
+
+#dsh-fairy-pet[data-state="thinking"] {
+  animation: dsh-pet-focus 2.4s ease-in-out infinite;
+}
+
+#dsh-fairy-pet[data-state="comforting"] {
+  animation: dsh-pet-soothe 5s ease-in-out infinite;
+}
+
+#dsh-fairy-pet[data-low-power],
+#dsh-fairy-pet[data-visual-suspended] {
+  animation: none !important;
+  filter: none !important;
+}
+
+@keyframes dsh-pet-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes dsh-pet-focus {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-2px) scale(1.02); }
+}
+
+@keyframes dsh-pet-soothe {
+  0%, 100% { transform: translateY(2px) scale(0.99); }
+  50% { transform: translateY(-1px) scale(1); }
+}

@@ -1,0 +1,12 @@
+
+<svg class="dsh-fairy-pulse-layer" viewBox="-160 -160 480 480" xmlns="http://www.w3.org/2000/svg" role="presentation">
+	<g class="dsh-fairy-lash-pulse" fill="none" stroke="#f4fdff">
+		<g class="dsh-fairy-lash-pulse-wave">
+			<circle cx="80" cy="80" r="52" stroke-width="20" stroke-opacity=".05"/>
+			<circle cx="80" cy="80" r="52" stroke-width="16" stroke-opacity=".06"/>
+			<circle cx="80" cy="80" r="52" stroke-width="12" stroke-opacity=".08"/>
+			<circle cx="80" cy="80" r="52" stroke-width="8" stroke-opacity=".10"/>
+			<circle cx="80" cy="80" r="52" stroke-width="4.5" stroke-opacity=".09"/>
+		</g>
+	</g>
+</svg>

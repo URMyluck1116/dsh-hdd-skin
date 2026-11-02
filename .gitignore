@@ -1,0 +1,6 @@
+boot.mp4
+boot-new.mp4
+*.log
+*.zip
+node_modules/
+_style-work/

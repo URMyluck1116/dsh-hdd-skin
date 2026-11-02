@@ -1,0 +1,17 @@
+{
+  "name": "dsh-plugin-wallpaper",
+  "version": "1.0.0",
+  "private": true,
+  "description": "H.D.D. wallpaper theme for DeepSeek Harness: sidebar wallpaper, framed stage, triangle-grid sphere, watermark, eye mascot and boot video.",
+  "type": "module",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
+  }
+}
